@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useEffect, type FormEvent, type ReactNode } from "react";
+import { useState, type FormEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { inter } from "./fonts";
 
 const NEWSLETTER_EMAIL = process.env.NEXT_PUBLIC_NEWSLETTER_EMAIL ?? "";
 
@@ -21,6 +20,19 @@ const USEFUL_LINKS = [
   { label: "Blog", href: "/blog" },
   { label: "Privacy Policy", href: "/privacy-policy" },
   { label: "Terms & Conditions", href: "/terms" },
+];
+
+const SERVICE_AREAS = [
+  "Southampton",
+  "Shirley",
+  "Portswood",
+  "Woolston",
+  "Bitterne",
+  "Eastleigh",
+  "Totton",
+  "Hedge End",
+  "Chandler's Ford",
+  "Romsey",
 ];
 
 const svgBase = {
@@ -51,6 +63,13 @@ const MailIcon = ({ className = "h-5 w-5" }: { className?: string }) => (
   </svg>
 );
 
+const PhoneIcon = ({ className = "h-5 w-5" }: { className?: string }) => (
+  <svg {...svgBase} className={className}>
+    <path d="M5 4h3.5l1.8 4.5-2.3 1.5a11 11 0 0 0 6 6l1.5-2.3L20 15.5V19a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" />
+  </svg>
+);
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ShieldCheck = ({ className }: { className?: string }) => (
   <svg {...svgBase} className={className}>
     <path d="M12 3 5 6v5.5c0 4.2 2.9 8 7 9.5 4.1-1.5 7-5.300 7-9.500V6l-7-3Z" />
@@ -58,12 +77,14 @@ const ShieldCheck = ({ className }: { className?: string }) => (
   </svg>
 );
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const StarIcon = ({ className }: { className?: string }) => (
   <svg {...svgBase} className={className}>
     <path d="m12 3.500 2.600 5.300 5.800.8-4.200 4.100 1 5.800-5.200-2.700-5.200 2.700 1-5.800-4.200-4.100 5.800-.8L12 3.500Z" />
   </svg>
 );
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ToolsIcon = ({ className }: { className?: string }) => (
   <svg {...svgBase} className={className}>
     <path d="m4 20 8.500-8.500M12.500 11.500 17 7M15 4a4 4 0 0 0-1 4.500l-1.500 1.500 2 2 1.500-1.500A4 4 0 0 0 20 9l-2.500 1-1.500-1.500L17 6l-2-2Z" />
@@ -71,6 +92,7 @@ const ToolsIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const DiamondIcon = ({ className }: { className?: string }) => (
   <svg {...svgBase} className={className}>
     <path d="M6 3h12l4 6-10 12L2 9l4-6Z" />
@@ -78,32 +100,7 @@ const DiamondIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const Facebook = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
-    <path d="M13.500 21v-7.500h2.600l.4-3h-3V8.600c0-.9.300-1.500 1.600-1.500h1.500V4.400c-.3 0-1.200-.1-2.200-.1-2.300 0-3.900 1.400-3.900 4v2.200H8v3h2.500V21h3Z" />
-  </svg>
-);
 
-const Instagram = () => (
-  <svg {...svgBase} strokeWidth={1.8} className="h-4 w-4">
-    <rect x="3.500" y="3.500" width="17" height="17" rx="5" />
-    <circle cx="12" cy="12" r="4" />
-    <circle cx="17.200" cy="6.800" r=".6" fill="currentColor" />
-  </svg>
-);
-
-const Youtube = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
-    <path d="M21.600 7.200a2.500 2.500 0 0 0-1.800-1.800C18.200 5 12 5 12 5s-6.200 0-7.800.4A2.500 2.500 0 0 0 2.400 7.200C2 8.800 2 12 2 12s0 3.200.4 4.800a2.500 2.500 0 0 0 1.800 1.800C5.800 19 12 19 12 19s6.200 0 7.800-.4a2.500 2.500 0 0 0 1.800-1.800c.4-1.600.4-4.800.4-4.800s0-3.200-.4-4.800ZM10 15V9l5.200 3L10 15Z" />
-  </svg>
-);
-
-
-const SOCIALS: { label: string; href: string; icon: ReactNode }[] = [
-  { label: "Facebook", href: "#", icon: <Facebook /> },
-  { label: "Instagram", href: "#", icon: <Instagram /> },
-  { label: "YouTube", href: "#", icon: <Youtube /> },
-];
 
 function LinkColumn({
   title,
@@ -221,19 +218,15 @@ function NewsletterForm() {
 }
 
 export default function Footer() {
-  const [year, setYear] = useState(2024);
-
-  useEffect(() => {
-    setYear(new Date().getFullYear());
-  }, []);
+  const [year] = useState(() => new Date().getFullYear());
 
   return (
     <footer className="relative overflow-hidden bg-[#04152b] text-white">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#06203f]/40 via-transparent to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 pt-14 lg:px-12 lg:pt-16">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-12 xl:gap-8">
-          <div className="md:col-span-2 lg:col-span-3 xl:col-span-3">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-12 xl:gap-8">
+          <div className="md:col-span-2 lg:col-span-2 xl:col-span-3">
             <Link href="/" aria-label="UKB Bathrooms home">
               <Image
                 src="/images/logo1.png"
@@ -260,7 +253,21 @@ export default function Footer() {
           <LinkColumn title="Quick Links" links={QUICK_LINKS} />
           <LinkColumn title="Useful Links" links={USEFUL_LINKS} />
 
-          <div className="md:col-span-2 lg:col-span-3 xl:col-span-3 xl:border-l xl:border-[#12335f] xl:pl-10">
+          <div className="md:col-span-2 lg:col-span-2 xl:col-span-2">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-white">
+              Areas We Cover
+            </h3>
+            <span className="mt-2.5 mb-5 block h-0.5 w-8 bg-[#1E9BF0]" />
+            <ul className="space-y-2.5">
+              {SERVICE_AREAS.map((area) => (
+                <li key={area} className="text-sm text-white/85">
+                  {area}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="md:col-span-2 lg:col-span-2 xl:col-span-3 xl:border-l xl:border-[#12335f] xl:pl-10">
             <MailIcon className="h-7 w-7 text-[#1E9BF0]" />
             <h3 className="mt-2.5 text-lg font-bold">Get In Touch</h3>
             <p className="mt-2 text-sm leading-relaxed text-white/80">
@@ -269,27 +276,40 @@ export default function Footer() {
               We&apos;re here to help.
             </p>
 
-            <div className="mt-6">
-              <NewsletterForm />
+            <div className="mt-6 space-y-3">
+              <a href="tel:07838349520" className="flex items-center gap-3 text-sm text-white/90 hover:text-[#2F9BF5] transition-colors">
+                <PhoneIcon className="h-5 w-5" />
+                07838 349520
+              </a>
+              <a href="mailto:info@ukbbathroom.co.uk" className="flex items-center gap-3 text-sm text-white/90 hover:text-[#2F9BF5] transition-colors">
+                <MailIcon className="h-5 w-5" />
+                info@ukbbathroom.co.uk
+              </a>
+              <div className="flex items-start gap-3 text-sm text-white/90">
+                <span className="mt-0.5">
+                  <svg {...svgBase} className="h-5 w-5">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                </span>
+                <div>
+                  <p>51 Westfield Road</p>
+                  <p>Southampton SO15 4HQ</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 text-sm text-white/90">
+                <span className="mt-0.5">
+                  <svg {...svgBase} className="h-5 w-5">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 6v6l4 2" />
+                  </svg>
+                </span>
+                <p>Opening Hours: 8am - 6pm</p>
+              </div>
             </div>
 
-            <p className="mt-5 max-w-60 text-xs leading-relaxed text-white/70">
-              Follow us for inspiration, latest projects and expert tips.
-            </p>
-
-            <div className="mt-5 flex gap-3">
-              {SOCIALS.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  aria-label={s.label}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-[#12335f] bg-[#061d3a] text-white transition hover:border-[#2F9BF5] hover:bg-[#0B86EE]"
-                >
-                  {s.icon}
-                </a>
-              ))}
+            <div className="mt-6">
+              <NewsletterForm />
             </div>
           </div>
         </div>

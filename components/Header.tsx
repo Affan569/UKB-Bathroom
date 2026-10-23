@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Icon from "./icon";
-import { inter, montserrat } from "./fonts";
+import { inter } from "./fonts";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
@@ -47,18 +47,15 @@ export default function Header() {
   const pathname = usePathname();
   const [isScrolledDown, setIsScrolledDown] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const [prefersReducedMotion] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  });
+  const [mounted] = useState(() => typeof window !== 'undefined');
   const lastScrollY = useRef(0);
-
-  // Prevent hydration mismatch
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
 
     const threshold = 10;
     let ticking = false;
@@ -82,9 +79,17 @@ export default function Header() {
       }
     };
 
+    const handleMediaChange = (e: MediaQueryListEvent) => {
+      setPrefersReducedMotion(e.matches);
+    };
+
     update();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    mediaQuery.addEventListener("change", handleMediaChange);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      mediaQuery.removeEventListener("change", handleMediaChange);
+    };
   }, []);
 
   return (

@@ -1,10 +1,16 @@
-"use client";
-
 import Header from "@/components/Header";
 import { inter, montserrat } from "@/components/fonts";
 import Image from "next/image";
 import BackToTop from "@/components/BackToTop";
-import { useEffect, useState } from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | UKB Bathrooms",
+  description: "Read UKB Bathrooms' privacy policy to understand how we collect, use, and protect your personal information.",
+  alternates: {
+    canonical: "https://ukbbathrooms.co.uk/privacy-policy",
+  },
+};
 
 const NAVY = "#0b1b33";
 const BLUE = "#0B86EE";
@@ -20,21 +26,7 @@ const Eyebrow = ({ children, className = "", style = {} }: { children: React.Rea
 );
 
 export default function PrivacyPolicyPage() {
-  const [lastUpdated, setLastUpdated] = useState("");
-
-  // Update SEO metadata and date
-  useEffect(() => {
-    document.title = "Privacy Policy | UKB Bathrooms";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute("content", "Read UKB Bathrooms' privacy policy to understand how we collect, use, and protect your personal information.");
-    }
-    const canonical = document.querySelector('link[rel="canonical"]');
-    if (canonical) {
-      canonical.setAttribute("href", "https://ukbbathrooms.co.uk/privacy-policy");
-    }
-    setLastUpdated(new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }));
-  }, []);
+  const lastUpdated = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 
   return (
     <main className="min-h-screen bg-white text-slate-800">
@@ -257,7 +249,7 @@ export default function PrivacyPolicyPage() {
             {/* Children's Privacy */}
             <section>
               <h2 className={`${montserrat.className} text-2xl font-bold`} style={{ color: NAVY }}>
-                8. Children's Privacy
+                8. Children&apos;s Privacy
               </h2>
               <p className={`${inter.className} mt-4 text-[15px] leading-7 text-slate-600`}>
                 Our services are not intended for children under the age of 18. We do not knowingly collect personal information from children under 18. If you are a parent or guardian and believe your child has provided us with personal information, please contact us, and we will delete such information.
@@ -270,7 +262,7 @@ export default function PrivacyPolicyPage() {
                 9. Changes to This Policy
               </h2>
               <p className={`${inter.className} mt-4 text-[15px] leading-7 text-slate-600`}>
-                We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date. You are advised to review this Privacy Policy periodically for any changes.
+                We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the &quot;Last updated&quot; date. You are advised to review this Privacy Policy periodically for any changes.
               </p>
             </section>
 

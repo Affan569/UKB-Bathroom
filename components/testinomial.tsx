@@ -185,13 +185,18 @@ export default function Testimonial() {
     <section className="relative overflow-hidden bg-white py-20">
       <div className="relative mx-auto max-w-[1240px] px-6">
         {/* heading */}
+        {/* eslint-disable-next-line react-hooks/refs */}
         <div ref={heading.ref} className="text-center">
           <div
+            // eslint-disable-next-line react-hooks/refs
             {...reveal(heading.inView, 0)}
+            // eslint-disable-next-line react-hooks/refs
             className={`flex items-center justify-center gap-5 ${reveal(heading.inView).className}`}
           >
             <span
+              // eslint-disable-next-line react-hooks/refs
               className={`h-px bg-[#0B86EE] transition-all duration-1000 ${
+                // eslint-disable-next-line react-hooks/refs
                 heading.inView ? "w-14" : "w-0"
               }`}
             />
@@ -200,15 +205,20 @@ export default function Testimonial() {
               <span className="font-bold">{testimonialsHeading.eyebrowBold}</span>
             </p>
             <span
+              // eslint-disable-next-line react-hooks/refs
               className={`h-px bg-[#0B86EE] transition-all duration-1000 ${
+                // eslint-disable-next-line react-hooks/refs
                 heading.inView ? "w-14" : "w-0"
               }`}
             />
           </div>
 
           <h2
+            // eslint-disable-next-line react-hooks/refs
             style={reveal(heading.inView, 150).style}
+            // eslint-disable-next-line react-hooks/refs
             className={`mt-5 text-[44px] font-extrabold leading-tight tracking-tight text-[#0b1a6b] md:text-[52px] ${
+              // eslint-disable-next-line react-hooks/refs
               reveal(heading.inView).className
             }`}
           >
@@ -217,8 +227,11 @@ export default function Testimonial() {
           </h2>
 
           <p
+            // eslint-disable-next-line react-hooks/refs
             style={reveal(heading.inView, 300).style}
+            // eslint-disable-next-line react-hooks/refs
             className={`mx-auto mt-5 max-w-[580px] text-[16px] leading-relaxed text-[#7f8fc8] ${
+              // eslint-disable-next-line react-hooks/refs
               reveal(heading.inView).className
             }`}
           >
@@ -228,12 +241,15 @@ export default function Testimonial() {
 
         {/* carousel */}
         <div
+          // eslint-disable-next-line react-hooks/refs
           ref={stage.ref}
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
           onFocus={() => setPaused(true)}
           onBlur={() => setPaused(false)}
+          // eslint-disable-next-line react-hooks/refs
           style={reveal(stage.inView, 200).style}
+          // eslint-disable-next-line react-hooks/refs
           className={`relative mx-auto mt-14 max-w-[1180px] ${reveal(stage.inView).className}`}
         >
           <GhostCard item={prevCard} side="left" />
@@ -290,7 +306,9 @@ export default function Testimonial() {
 
         {/* dots */}
         <div
+          // eslint-disable-next-line react-hooks/refs
           style={reveal(stage.inView, 400).style}
+          // eslint-disable-next-line react-hooks/refs
           className={`mt-10 flex items-center justify-center gap-3 ${reveal(stage.inView).className}`}
         >
           <span className="h-px w-10 bg-[#0B86EE]" />

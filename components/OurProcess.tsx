@@ -51,13 +51,14 @@ export default function OurProcess() {
       { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
 
-    if (headingRef.current) {
-      observer.observe(headingRef.current);
+    const currentRef = headingRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (headingRef.current) {
-        observer.unobserve(headingRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);

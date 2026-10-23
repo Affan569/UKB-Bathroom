@@ -35,13 +35,14 @@ export default function Faq() {
       { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
 
-    if (headingRef.current) {
-      observer.observe(headingRef.current);
+    const currentRef = headingRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (headingRef.current) {
-        observer.unobserve(headingRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -54,13 +55,14 @@ export default function Faq() {
       { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
 
-    if (accordionRef.current) {
-      observer.observe(accordionRef.current);
+    const currentRef = accordionRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (accordionRef.current) {
-        observer.unobserve(accordionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);

@@ -1,6 +1,9 @@
 "use client";
+
 import Header from "@/components/Header";
 import BackToTop from "@/components/BackToTop";
+import Image from "next/image";
+import Link from "next/link";
 // app/gallery/page.tsx
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
@@ -54,10 +57,10 @@ export default function GalleryPage() {
 
   // Update metadata for client component
   useEffect(() => {
-    document.title = "Gallery | UKB Bathrooms - Our Completed Bathroom Projects";
+    document.title = "Gallery | UKB Bathrooms - Bathroom Installation Projects";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Browse our bathroom installation gallery showcasing our completed projects. See the quality and craftsmanship of UKB Bathrooms' work across the UK.");
+      metaDescription.setAttribute("content", "Browse our bathroom installation gallery showcasing completed projects in Southampton. See the quality and craftsmanship of UKB Bathrooms' work.");
     }
     const canonical = document.querySelector('link[rel="canonical"]');
     if (canonical) {
@@ -137,10 +140,13 @@ export default function GalleryPage() {
       <Header />
       {/* ================= HERO ================= */}
       <section className="relative isolate overflow-hidden bg-slate-950">
-        <img
+        <Image
           src="/images/gallery 1.png"
-          alt="UKB Bathrooms gallery showcasing professional bathroom installations"
-          className="absolute inset-0 -z-10 h-full w-full object-cover"
+          alt="UKB Bathrooms gallery showcasing professional bathroom installations in Southampton"
+          fill
+          priority
+          sizes="100vw"
+          className="absolute inset-0 -z-10 object-cover"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950/75 via-slate-950/35 to-transparent" />
 
@@ -217,12 +223,15 @@ export default function GalleryPage() {
                 onClick={() => open(item)}
                 className={`group relative overflow-hidden rounded-2xl bg-slate-200 text-left shadow-sm outline-none ring-sky-500 transition hover:shadow-xl focus-visible:ring-2 ${cardSpan(index)}`}
               >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-                />
+                <div className="relative h-full w-full">
+                  <Image
+                    src={item.image}
+                    alt={`${item.title} - bathroom project in Southampton`}
+                    fill
+                    sizes="(min-width: 768px) 25vw, 50vw"
+                    className="object-cover transition duration-700 group-hover:scale-105"
+                  />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent" />
                 {item.images.length > 1 && (
                   <span className="absolute right-3 top-3 rounded-full bg-black/50 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur">
@@ -263,28 +272,36 @@ export default function GalleryPage() {
             </h2>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-600">
               From modern bathroom upgrades to essential plumbing repairs, our
-              gallery showcases the standards we’re proud to deliver.
+              gallery showcases the standards we&apos;re proud to deliver.
             </p>
-            <a
+            <Link
               href="/#contact"
               className="mt-6 inline-flex items-center gap-2 rounded-full bg-sky-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-500/30 transition hover:bg-sky-600"
             >
               Get a Free Quote
               <Icon d={ICONS.arrow} className="h-4 w-4" />
-            </a>
+            </Link>
           </div>
 
           <div className="relative mx-auto h-64 w-full max-w-sm">
-            <img
-              src={galleryItems[0].images[0]}
-              alt="UKB Bathrooms completed bathroom project example"
-              className="absolute left-0 top-4 h-52 w-44 -rotate-6 rounded-xl border-4 border-white object-cover shadow-xl"
-            />
-            <img
-              src={galleryItems[4].images[0]}
-              alt="UKB Bathrooms bathroom renovation completed project"
-              className="absolute right-0 top-12 h-52 w-40 rotate-6 rounded-xl border-4 border-white object-cover shadow-xl"
-            />
+            <div className="absolute left-0 top-4 h-52 w-44 -rotate-6 rounded-xl border-4 border-white shadow-xl">
+              <Image
+                src={galleryItems[0].images[0]}
+                alt="UKB Bathrooms completed bathroom project example in Southampton"
+                fill
+                sizes="200px"
+                className="object-cover"
+              />
+            </div>
+            <div className="absolute right-0 top-12 h-52 w-40 rotate-6 rounded-xl border-4 border-white shadow-xl">
+              <Image
+                src={galleryItems[4].images[0]}
+                alt="UKB Bathrooms bathroom renovation completed project"
+                fill
+                sizes="200px"
+                className="object-cover"
+              />
+            </div>
             <p className="absolute -top-2 right-2 -rotate-6 text-right font-serif text-lg italic text-sky-700">
               Real Projects,
               <br />
@@ -294,9 +311,9 @@ export default function GalleryPage() {
 
           <dl className="grid gap-5">
             {[
-              { v: "1000+", l: "Projects Completed", i: ICONS.check },
-              { v: "5 ★", l: "Customer Rated", i: ICONS.star },
-              { v: "24/7", l: "Emergency Support", i: ICONS.phone },
+              { v: "Quality", l: "Workmanship", i: ICONS.check },
+              { v: "Local", l: "Expertise", i: ICONS.star },
+              { v: "8am-6pm", l: "Contact Hours", i: ICONS.phone },
             ].map((s) => (
               <div key={s.l} className="flex items-center gap-4">
                 <span className="flex h-12 w-12 items-center justify-center rounded-full bg-sky-100 text-sky-600">
@@ -336,11 +353,13 @@ export default function GalleryPage() {
             {/* images */}
             <div className="flex min-h-0 flex-col bg-slate-950">
               <div className="relative h-[40vh] w-full min-h-0 md:h-auto md:flex-1">
-                <img
+                <Image
                   key={selected.images[imgIndex]}
                   src={selected.images[imgIndex]}
-                  alt={`${selected.title} – photo ${imgIndex + 1}`}
-                  className="absolute inset-0 h-full w-full object-contain"
+                  alt={`${selected.title} – bathroom project photo ${imgIndex + 1}`}
+                  fill
+                  sizes="(min-width: 768px) 60vw, 90vw"
+                  className="object-contain"
                 />
                 {selected.images.length > 1 && (
                   <>
@@ -376,7 +395,7 @@ export default function GalleryPage() {
                         i === imgIndex ? "border-sky-400" : "border-transparent opacity-60 hover:opacity-100"
                       }`}
                     >
-                      <img src={src} alt={`${selected.title} thumbnail ${i + 1}`} className="h-full w-full object-cover" />
+                      <Image src={src} alt={`${selected.title} thumbnail ${i + 1}`} fill sizes="80px" className="object-cover" />
                     </button>
                   ))}
                 </div>
@@ -393,13 +412,13 @@ export default function GalleryPage() {
                 {selected.description}
               </p>
 
-              <a
+              <Link
                 href="/#contact"
                 className="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-sky-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-500/30 transition hover:bg-sky-600"
               >
                 Get a Free Quote
                 <Icon d={ICONS.arrow} className="h-4 w-4" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

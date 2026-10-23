@@ -9,12 +9,11 @@ import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us",
-  description: "Learn about UKB Bathrooms - your trusted bathroom experts with 15+ years of experience. Discover our story, values, and commitment to quality bathroom services across the UK.",
-  keywords: ["about UKB Bathrooms", "bathroom company UK", "bathroom fitters", "bathroom installation experts", "UK bathroom services"],
+  title: "About Us | UKB Bathrooms",
+  description: "Learn about UKB Bathrooms - your local bathroom experts in Southampton. Discover our commitment to quality bathroom services in Hampshire.",
   openGraph: {
-    title: "About Us | UKB Bathrooms - Your Trusted Bathroom Experts",
-    description: "Learn about UKB Bathrooms - your trusted bathroom experts with 15+ years of experience serving homes and businesses across the UK.",
+    title: "About Us | UKB Bathrooms - Your Local Bathroom Experts",
+    description: "Learn about UKB Bathrooms - your local bathroom experts serving homes and businesses in Southampton and surrounding areas.",
     url: "https://ukbbathrooms.co.uk/about",
   },
   alternates: {
@@ -136,6 +135,7 @@ interface LogoProps extends ImgHTMLAttributes<HTMLImageElement> {
   className?: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Logo = ({ src = "/images/logo1.png", alt = "Company Logo", className = "h-11 w-auto", ...props }: LogoProps) => (
   <img src={src} alt={alt} className={className} {...props} />
 );
@@ -149,10 +149,10 @@ const HERO_FEATURES = [
 ];
 
 const STATS = [
-  { icon: <Users className="h-8 w-8" />, value: "1000+", label: "Happy Customers" },
-  { icon: <Clock className="h-8 w-8" />, value: "24/7", label: "Emergency Support" },
-  { icon: <Star className="h-8 w-8" />, value: "5 Star", label: "Rated Service" },
-  { icon: <Home className="h-8 w-8" />, value: "15+", label: "Years of Experience" },
+  { icon: <Users className="h-8 w-8" />, value: "Local", label: "Bathroom Experts" },
+  { icon: <Clock className="h-8 w-8" />, value: "8am-6pm", label: "Opening Hours" },
+  { icon: <Star className="h-8 w-8" />, value: "Quality", label: "Workmanship" },
+  { icon: <Home className="h-8 w-8" />, value: "Southampton", label: "Based" },
 ];
 
 const WHY = [
@@ -209,7 +209,7 @@ export default function AboutPage() {
               <span style={{ color: LIGHT_BLUE }}>Bathroom Experts</span>
             </h1>
             <p className={`${inter.className} mt-6 max-w-md text-[15px] leading-7 text-white/90 animate-fade-in-up`} style={{ animationDelay: '0.3s', opacity: 0 }}>
-              At UKB Bathrooms we fit, repair and renovate bathrooms for homes and businesses across the UK.
+              At UKB Bathrooms we fit, repair and renovate bathrooms for homes and businesses in Southampton and surrounding areas.
               We turn up on time, do the job properly and leave the place clean.
             </p>
             <ul className="mt-9 flex flex-wrap items-center gap-y-4 animate-fade-in-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
@@ -273,11 +273,11 @@ export default function AboutPage() {
               <ShieldCheck className="h-5 w-5" />
             </span>
             <h3 className={`${montserrat.className} mt-3 text-[14px] font-bold leading-5`} style={{ color: NAVY }}>
-              Fully Insured
-              <br />&amp; Certified
+              Professional
+              <br />Service
             </h3>
             <p className={`${inter.className} mt-1.5 text-[11px] leading-4 text-slate-500`}>
-              Your home and business are in safe hands.
+              Quality workmanship for your bathroom project.
             </p>
           </div>
         </div>
@@ -371,7 +371,7 @@ export default function AboutPage() {
             <h2 className={`${montserrat.className} mt-3 text-xl font-bold leading-7`}>
               Trusted by Homes
               <br />
-              and Businesses <span style={{ color: LIGHT_BLUE }}>Across the UK</span>
+              and Businesses <span style={{ color: LIGHT_BLUE }}>in Southampton</span>
             </h2>
           </div>
           <ul className="grid grid-cols-2 gap-y-6 md:grid-cols-4">

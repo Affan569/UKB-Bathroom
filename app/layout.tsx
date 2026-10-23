@@ -20,11 +20,10 @@ export const metadata: Metadata = {
     canonical: 'https://ukbbathrooms.co.uk',
   },
   title: {
-    default: "UKB Bathrooms - Professional Bathroom Design & Installation Services in the UK",
+    default: "Bathroom Fitters Southampton | UKB Bathrooms",
     template: "%s | UKB Bathrooms"
   },
-  description: "Transform your bathroom with UKB Bathrooms. Expert bathroom design, supply, and installation services across the UK. Get a free quote for your dream bathroom renovation today.",
-  keywords: ["bathroom installation", "bathroom design", "bathroom renovation", "bathroom fitting", "UK bathroom services", "bathroom remodeling", "professional bathroom fitters", "bathroom plumbing", "bathroom tiling"],
+  description: "Local bathroom fitters in Southampton. Bathroom installation, renovation, wet rooms and ensuites. Free quote. Call 07838 349520.",
   authors: [{ name: "UKB Bathrooms" }],
   creator: "UKB Bathrooms",
   publisher: "UKB Bathrooms",
@@ -48,24 +47,17 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_GB",
     url: "https://ukbbathrooms.co.uk",
-    title: "UKB Bathrooms - Professional Bathroom Design & Installation Services in the UK",
-    description: "Transform your bathroom with UKB Bathrooms. Expert bathroom design, supply, and installation services across the UK. Get a free quote for your dream bathroom renovation today.",
+    title: "Bathroom Fitters Southampton | UKB Bathrooms",
+    description: "Local bathroom fitters in Southampton. Bathroom installation, renovation, wet rooms and ensuites. Free quote. Call 07838 349520.",
     siteName: "UKB Bathrooms",
     images: [
       {
         url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "UKB Bathrooms - Professional Bathroom Services",
+        alt: "UKB Bathrooms - Professional Bathroom Services in Southampton",
       },
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "UKB Bathrooms - Professional Bathroom Design & Installation Services in the UK",
-    description: "Transform your bathroom with UKB Bathrooms. Expert bathroom design, supply, and installation services across the UK.",
-    images: ["/images/og-image.jpg"],
-    creator: "@UKBBathrooms",
   },
   robots: {
     index: true,
@@ -77,9 +69,6 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
-  },
-  verification: {
-    google: "your-google-verification-code",
   },
 };
 

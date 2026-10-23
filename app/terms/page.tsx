@@ -1,10 +1,16 @@
-"use client";
-
 import Header from "@/components/Header";
 import { inter, montserrat } from "@/components/fonts";
 import Image from "next/image";
 import BackToTop from "@/components/BackToTop";
-import { useEffect, useState } from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms & Conditions | UKB Bathrooms",
+  description: "Read UKB Bathrooms' terms and conditions to understand our service agreements, payment terms, and warranty policies.",
+  alternates: {
+    canonical: "https://ukbbathrooms.co.uk/terms",
+  },
+};
 
 const NAVY = "#0b1b33";
 const BLUE = "#0B86EE";
@@ -20,21 +26,7 @@ const Eyebrow = ({ children, className = "", style = {} }: { children: React.Rea
 );
 
 export default function TermsPage() {
-  const [lastUpdated, setLastUpdated] = useState("");
-
-  // Update SEO metadata and date
-  useEffect(() => {
-    document.title = "Terms & Conditions | UKB Bathrooms";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute("content", "Read UKB Bathrooms' terms and conditions to understand our service agreements, payment terms, and warranty policies.");
-    }
-    const canonical = document.querySelector('link[rel="canonical"]');
-    if (canonical) {
-      canonical.setAttribute("href", "https://ukbbathrooms.co.uk/terms");
-    }
-    setLastUpdated(new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }));
-  }, []);
+  const lastUpdated = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 
   return (
     <main className="min-h-screen bg-white text-slate-800">

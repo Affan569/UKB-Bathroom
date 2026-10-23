@@ -6,7 +6,7 @@ import HeroSection from '@/components/HeroSection';
 import VideoModal from '@/components/VideoModal';
 import OurProcess from '@/components/OurProcess';
 import AboutServices from '@/components/AboutServices';
-import Testimonial from '@/components/testinomial';
+// import Testimonial from '@/components/testinomial';
 import Faq from '@/components/faq';
 import Contact from '@/components/contact';
 import BackToTop from '@/components/BackToTop';
@@ -16,10 +16,10 @@ export default function Home() {
 
   // Update metadata for client component
   useEffect(() => {
-    document.title = "UKB Bathrooms - Professional Bathroom Design & Installation Services in the UK";
+    document.title = "Bathroom Fitters Southampton | UKB Bathrooms";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Transform your bathroom with UKB Bathrooms. Expert bathroom design, supply, and installation services across the UK. Get a free quote for your dream bathroom renovation today.");
+      metaDescription.setAttribute("content", "Local bathroom fitters in Southampton. Bathroom installation, renovation, wet rooms and ensuites. Free quote. Call +44 7838 349520.");
     }
   }, []);
 
@@ -29,7 +29,7 @@ export default function Home() {
       <HeroSection onVideoOpen={() => setIsVideoModalOpen(true)} />
       <OurProcess />
       <AboutServices />
-      <Testimonial />
+      {/* <Testimonial /> */}
       <Faq />
       <Contact />
       <VideoModal

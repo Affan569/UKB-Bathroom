@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Header from "@/components/Header";
 import { blogPosts, type BlogPost } from "../../Data/blog";
 
@@ -43,7 +44,16 @@ export default function BlogPage() {
  
       {/* Hero */}
       <section className="blog-hero">
-        <img className="blog-hero-bg" src="/images/hero.png" alt="" />
+        <div className="blog-hero-bg">
+          <Image
+            src="/images/hero.png"
+            alt="UKB Bathrooms modern bathroom installation featuring quality craftsmanship"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        </div>
         <div className="blog-hero-inner">
           <p className="blog-eyebrow">Our blog</p>
           <h1 className="blog-title">
@@ -71,7 +81,13 @@ export default function BlogPage() {
                 aria-label={`Read: ${post.title}`}
               >
                 <div className="blog-media">
-                  <img src={post.image} alt="" loading="lazy" />
+                  <Image
+                    src={post.image}
+                    alt={`${post.title} - bathroom design and inspiration`}
+                    fill
+                    sizes="(min-width: 768px) 33vw, 50vw"
+                    className="object-cover"
+                  />
                 </div>
                 <div className="blog-body">
                   <div className="blog-meta">
@@ -118,7 +134,13 @@ export default function BlogPage() {
             </button>
  
             <div className="blog-modal-media">
-              <img src={active.image} alt="" />
+              <Image
+                src={active.image}
+                alt={`${active.title} - bathroom article featured image`}
+                fill
+                sizes="(min-width: 768px) 60vw, 90vw"
+                className="object-cover"
+              />
             </div>
  
             <div className="blog-modal-body">
@@ -147,7 +169,7 @@ export default function BlogPage() {
  
 const css = `
 .blog-hero{position:relative;overflow:hidden;background:#08121f;color:#fff}
-.blog-hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center right}
+.blog-hero-bg{position:absolute;inset:0;width:100%;height:100%}
 .blog-hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(5,12,22,.94) 0%,rgba(5,12,22,.7) 45%,rgba(5,12,22,.15) 100%)}
 .blog-hero-inner{position:relative;z-index:2;max-width:1160px;margin:0 auto;padding:72px 24px 56px}
 .blog-eyebrow{display:flex;align-items:center;gap:14px;margin:0 0 18px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}

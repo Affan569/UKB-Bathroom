@@ -6,6 +6,7 @@ import Icon from "./icon";
 import { inter, montserrat } from "./fonts";
 
 interface HeroSectionProps {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onVideoOpen: () => void;
 }
 
@@ -71,33 +72,30 @@ export default function HeroSection({ onVideoOpen }: HeroSectionProps) {
               className={`${montserrat.className} mb-6 text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl animate-fade-in-up`}
               style={{ animationDelay: '0.2s', opacity: 0 }}
             >
-              Your Dream Bathroom,
+              Bathroom Fitters in
               <br />
-              Our <span className="text-[#2F9BF5]">Expertise.</span>
+              <span className="text-[#2F9BF5]">Southampton</span>
             </h1>
 
             <p className="mb-8 max-w-[520px] text-base leading-relaxed text-white/90 lg:text-lg animate-fade-in-up" style={{ animationDelay: '0.3s', opacity: 0 }}>
-              From modern designs to complete installations, UKB Bathrooms brings your vision to life with quality,
-              reliability and expert craftsmanship. Stylish bathrooms, built to last.
+              Expert bathroom installation, renovation, wet rooms and ensuites in Southampton and surrounding areas. Serving Shirley, Portswood, Woolston, Bitterne, Eastleigh, Totton, Hedge End, Chandler&apos;s Ford and Romsey.
             </p>
 
             <div className="flex flex-col gap-4 sm:flex-row animate-fade-in-up" style={{ animationDelay: '0.4s', opacity: 0 }}>
               <Link
-                href="#contact"
+                href="tel:+447838349520"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0B86EE] px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#0A75D1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#071a33]"
               >
                 <Icon name="calendar" className="h-4 w-4" />
-                Get a Free Quote
+                Call +44 7838 349520
               </Link>
 
-              <button
-                type="button"
-                onClick={onVideoOpen}
+              <Link
+                href="#contact"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/70 bg-[#071a33]/40 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#071a33]"
               >
-                <Icon name="play" className="h-4 w-4" />
-                Watch Our Work
-              </button>
+                Get a Free Quote
+              </Link>
             </div>
           </div>
 

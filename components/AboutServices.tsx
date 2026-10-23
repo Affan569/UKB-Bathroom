@@ -1,6 +1,7 @@
 'use client';
 
 import Image from "next/image";
+import Link from "next/link";
 import Icon from "./icon";
 import { inter, montserrat } from "./fonts";
 import { ICONS } from "./icon";
@@ -42,7 +43,7 @@ const SERVICES: {
     icon: "diamond",
     title: "Bathroom Renovation",
     description: "Upgrade your space, add more value.",
-    image: "/images/bathroom renovetion.jpg",
+    image: "/images/bathroom-renovation.jpg",
   },
 ];
 
@@ -84,13 +85,14 @@ export default function AboutServices() {
       { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
 
-    if (headingRef.current) {
-      observer.observe(headingRef.current);
+    const currentRef = headingRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (headingRef.current) {
-        observer.unobserve(headingRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -190,13 +192,13 @@ export default function AboutServices() {
                   </p>
                 </div>
 
-                <a
-                  href="#"
+                <Link
+                  href="/#contact"
                   className="inline-flex items-center gap-1.5 text-[12px] font-semibold text-[#2F9BF5] transition-all hover:text-white group-hover:gap-2.5"
                 >
-                  Learn More
+                  Get a Quote
                   <Icon name="arrow" className="h-3.5 w-3.5" />
-                </a>
+                </Link>
               </div>
             </div>
           ))}

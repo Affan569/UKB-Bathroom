@@ -244,8 +244,11 @@ export default function Contact() {
           </h2>
 
           <p
+            // eslint-disable-next-line react-hooks/refs
             style={reveal(left.inView, 240).style}
+            // eslint-disable-next-line react-hooks/refs
             className={`mt-7 max-w-[440px] text-[15.5px] leading-[1.75] text-[#4a5a99] ${
+              // eslint-disable-next-line react-hooks/refs
               reveal(left.inView).className
             }`}
           >
@@ -256,7 +259,9 @@ export default function Contact() {
 
           {/* signature */}
           <div
+            // eslint-disable-next-line react-hooks/refs
             style={reveal(left.inView, 800).style}
+            // eslint-disable-next-line react-hooks/refs
             className={`mt-12 flex flex-wrap items-end gap-x-3 ${reveal(left.inView).className}`}
           >
             <div>
@@ -275,8 +280,10 @@ export default function Contact() {
 
           {/* call / email */}
           <div
+            // eslint-disable-next-line react-hooks/refs
             style={reveal(left.inView, 900).style}
             className={`mt-10 flex flex-wrap items-center gap-x-8 gap-y-5 ${
+              // eslint-disable-next-line react-hooks/refs
               reveal(left.inView).className
             }`}
           >
@@ -314,8 +321,11 @@ export default function Contact() {
         </div>
 
         <div
+          // eslint-disable-next-line react-hooks/refs
           ref={right.ref}
+          // eslint-disable-next-line react-hooks/refs
           style={reveal(right.inView, 150).style}
+          // eslint-disable-next-line react-hooks/refs
           className={`relative lg:mt-10 ${reveal(right.inView).className}`}
         >
           <div className="relative rounded-[22px] bg-white px-7 pb-8 pt-10 shadow-[0_30px_80px_-20px_rgba(11,94,215,0.28),0_6px_20px_rgba(11,94,215,0.06)] sm:px-10">

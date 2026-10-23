@@ -17,36 +17,41 @@ export const FAQS: FaqItem[] = [
   {
     question: "What bathroom services do you offer?",
     answer:
-      "We cover the full journey: 3D bathroom design, supply of premium fittings and fixtures, professional installation, tiling and complete bathroom renovations.",
+      "We cover the full journey: 3D bathroom design, supply of premium fittings and fixtures, professional installation, tiling and complete bathroom renovations in Southampton and surrounding areas.",
   },
   {
-    question: "Do you offer bathroom installation services?",
+    question: "How much does a bathroom installation cost?",
     answer:
-      "Yes. Our skilled installers handle everything from stripping out the old bathroom to fitting your new one, including plumbing, tiling and finishing, with a flawless result.",
+      "Costs vary depending on the scope of work, materials chosen, and the size of your bathroom. We provide detailed quotes for each project. Contact us for a free quote specific to your requirements.",
   },
   {
-    question: "How long does installation take?",
+    question: "How long does a bathroom installation take?",
     answer:
-      "Most bathrooms take between 5 and 10 working days, depending on the size of the room and the scope of work. We'll give you a clear timeline before we start.",
+      "Most bathroom installations take between 5 and 10 working days, depending on the size of the room and the scope of work. We'll provide a clear timeline during your consultation.",
   },
   {
-    question: "Can I get a custom bathroom design?",
+    question: "Do I need planning permission for a bathroom renovation?",
     answer:
-      "Absolutely. We create 3D designs tailored to your space, style and budget, so you can see exactly how your bathroom will look before any work begins.",
+      "Most bathroom renovations don't require planning permission, but certain work like moving walls or changing drainage may need building regulations approval. We can advise on this during your consultation.",
   },
   {
-    question: "What is your return or exchange policy?",
+    question: "What waterproofing do you use for wet rooms?",
     answer:
-      "Unused products in their original packaging can be returned or exchanged within 30 days. Made-to-order and custom items are not eligible. Contact us and we'll help you sort it out.",
+      "We use professional-grade tanking systems and waterproof membranes to ensure your wet room is fully protected against water damage. All work complies with industry standards.",
   },
   {
-    question: "Do you offer warranties on your products?",
+    question: "What guarantees do you offer?",
     answer:
-      "Yes. Our products come with manufacturer warranties, and our installation work is backed by our own workmanship guarantee. Details vary by product, so just ask.",
+      "Our installation work comes with a workmanship guarantee. Products have their own manufacturer warranties. We'll provide full details on guarantees when we discuss your project.",
   },
   {
-    question: "Do you provide delivery across the UK?",
+    question: "What is included in your quote?",
     answer:
-      "We deliver to addresses across the UK. Delivery times and costs depend on your location and the items ordered, and we'll confirm both when you place your order.",
+      "Our quotes include all labour, materials, fixtures and fittings specified, and any necessary preparation work. We provide detailed, transparent quotes so you know exactly what's included.",
+  },
+  {
+    question: "Do you work in my area?",
+    answer:
+      "We serve Southampton and surrounding areas including Shirley, Portswood, Woolston, Bitterne, Eastleigh, Totton, Hedge End, Chandler's Ford and Romsey. Contact us to confirm availability in your location.",
   },
 ];

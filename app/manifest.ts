@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'UKB Bathrooms - Professional Bathroom Design & Installation',
     short_name: 'UKB Bathrooms',
-    description: 'Transform your bathroom with UKB Bathrooms. Expert bathroom design, supply, and installation services across the UK.',
+    description: 'Transform your bathroom with UKB Bathrooms. Expert bathroom design, supply, and installation services in Southampton and Hampshire.',
     start_url: '/',
     display: 'standalone',
     background_color: '#0b1b33',
