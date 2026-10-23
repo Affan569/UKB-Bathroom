@@ -1,16 +1,22 @@
-"use client";
+import type { Metadata } from 'next';
+import GalleryPageContent from './GalleryPageContent';
 
-import Header from "@/components/Header";
-import BackToTop from "@/components/BackToTop";
-import Image from "next/image";
-import Link from "next/link";
-// app/gallery/page.tsx
-import { useCallback, useEffect, useMemo, useState } from "react";
-import {
-  galleryCategories,
-  galleryItems,
-  type GalleryItem,
-} from "@/Data/gallery";
+export const metadata: Metadata = {
+  title: "Gallery | UKB Bathrooms - Bathroom Installation Projects",
+  description: "Browse our bathroom installation gallery showcasing completed projects in Southampton. See the quality and craftsmanship of UKB Bathrooms' work.",
+  openGraph: {
+    title: "Gallery | UKB Bathrooms - Bathroom Installation Projects",
+    description: "Browse our bathroom installation gallery showcasing completed projects in Southampton. See the quality and craftsmanship of UKB Bathrooms' work.",
+    url: "https://ukbbathrooms.co.uk/gallery",
+  },
+  alternates: {
+    canonical: "https://ukbbathrooms.co.uk/gallery",
+  },
+};
+
+export default function GalleryPage() {
+  return <GalleryPageContent />;
+}
 
 /* ---------- tiny inline icons (no extra packages needed) ---------- */
 const Icon = ({ d, className = "h-5 w-5" }: { d: string; className?: string }) => (

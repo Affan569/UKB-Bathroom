@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import BlogPageContent from './BlogPageContent';
 
 export const metadata: Metadata = {
   title: 'Blog | UKB Bathrooms - Bathroom Design Tips & Inspiration',
@@ -13,12 +14,9 @@ export const metadata: Metadata = {
   },
 };
 
-"use client";
-
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import Header from "@/components/Header";
-import { blogPosts, type BlogPost } from "../../Data/blog";
+export default function BlogPage() {
+  return <BlogPageContent />;
+}
 
 const formatDate = (iso: string) =>
   new Date(iso).toLocaleDateString("en-US", {
