@@ -51,8 +51,12 @@ export default function Header() {
     if (typeof window === 'undefined') return false;
     return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   });
-  const [mounted] = useState(() => typeof window !== 'undefined');
+  const [mounted, setMounted] = useState(false);
   const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
