@@ -13,6 +13,10 @@ export interface GalleryItem {
   /** All images shown inside the popup (first one is usually the cover) */
   images: string[];
   description: string;
+  /** Additional project details for SEO and display */
+  area?: string; // e.g., "Southampton", "Shirley"
+  propertyType?: string; // e.g., "Residential", "Commercial"
+  scope?: string; // e.g., "Full renovation", "Plumbing repair"
 }
 
 export const galleryCategories: ("All" | GalleryCategory)[] = [

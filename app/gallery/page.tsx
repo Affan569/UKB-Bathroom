@@ -412,6 +412,26 @@ export default function GalleryPage() {
                 {selected.description}
               </p>
 
+              {(selected.area || selected.propertyType || selected.scope) && (
+                <div className="flex flex-wrap gap-3 text-xs text-slate-500">
+                  {selected.area && (
+                    <span className="rounded-full bg-slate-100 px-3 py-1">
+                      {selected.area}
+                    </span>
+                  )}
+                  {selected.propertyType && (
+                    <span className="rounded-full bg-slate-100 px-3 py-1">
+                      {selected.propertyType}
+                    </span>
+                  )}
+                  {selected.scope && (
+                    <span className="rounded-full bg-slate-100 px-3 py-1">
+                      {selected.scope}
+                    </span>
+                  )}
+                </div>
+              )}
+
               <Link
                 href="/#contact"
                 className="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-sky-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-500/30 transition hover:bg-sky-600"
