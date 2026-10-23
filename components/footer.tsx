@@ -277,9 +277,9 @@ export default function Footer() {
             </p>
 
             <div className="mt-6 space-y-3">
-              <a href="tel:07838349520" className="flex items-center gap-3 text-sm text-white/90 hover:text-[#2F9BF5] transition-colors">
+              <a href="tel:+44 7838349520" className="flex items-center gap-3 text-sm text-white/90 hover:text-[#2F9BF5] transition-colors">
                 <PhoneIcon className="h-5 w-5" />
-                07838 349520
+                +44 7838349520
               </a>
               <a href="mailto:info@ukbbathroom.co.uk" className="flex items-center gap-3 text-sm text-white/90 hover:text-[#2F9BF5] transition-colors">
                 <MailIcon className="h-5 w-5" />

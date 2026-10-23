@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     default: "Bathroom Fitters Southampton | UKB Bathrooms",
     template: "%s | UKB Bathrooms"
   },
-  description: "Local bathroom fitters in Southampton. Bathroom installation, renovation, wet rooms and ensuites. Free quote. Call 07838 349520.",
+  description: "Local bathroom fitters in Southampton. Bathroom installation, renovation, wet rooms and ensuites. Free quote. Call +44 7838349520.",
   authors: [{ name: "UKB Bathrooms" }],
   creator: "UKB Bathrooms",
   publisher: "UKB Bathrooms",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     locale: "en_GB",
     url: "https://ukbbathrooms.co.uk",
     title: "Bathroom Fitters Southampton | UKB Bathrooms",
-    description: "Local bathroom fitters in Southampton. Bathroom installation, renovation, wet rooms and ensuites. Free quote. Call 07838 349520.",
+    description: "Local bathroom fitters in Southampton. Bathroom installation, renovation, wet rooms and ensuites. Free quote. Call +44 7838349520.",
     siteName: "UKB Bathrooms",
     images: [
       {

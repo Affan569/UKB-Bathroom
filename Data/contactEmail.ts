@@ -31,8 +31,8 @@ export const contactFormHeading = {
 };
 
 export const contactInfo = {
-  phone: "07838 349520",
-  phoneHref: "tel:07838349520",
+  phone: "+44 7838349520",
+  phoneHref: "tel:+447838349520",
   email: "info@ukbbathroom.co.uk",
 };
 

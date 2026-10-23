@@ -276,7 +276,7 @@ export default function PrivacyPolicyPage() {
               </p>
               
               <div className={`${inter.className} mt-4 space-y-2 text-[15px] leading-7 text-slate-600`}>
-                <p><strong>Email:</strong> info@ukbbathrooms.com</p>
+                <p><strong>Email:</strong> info@ukbbathrooms.co.uk</p>
               </div>
             </section>
           </div>
