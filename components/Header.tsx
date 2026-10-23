@@ -47,7 +47,7 @@ export default function Header() {
   const pathname = usePathname();
   const [isScrolledDown, setIsScrolledDown] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
-  const [prefersReducedMotion] = useState(() => {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
     if (typeof window === 'undefined') return false;
     return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   });
