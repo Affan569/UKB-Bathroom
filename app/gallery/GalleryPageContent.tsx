@@ -328,7 +328,7 @@ export default function GalleryPageContent() {
           aria-label={selected.title}
         >
            <div
-            className="relative grid h-[92vh] w-full max-w-5xl grid-rows-[auto_minmax(0,1fr)] overflow-hidden rounded-3xl bg-white shadow-2xl md:h-[65vh] md:grid-cols-[1.5fr_1fr] md:grid-rows-1"
+            className="relative grid h-[92vh] w-full max-w-5xl grid-rows-[45%_minmax(0,1fr)] overflow-hidden rounded-3xl bg-white shadow-2xl md:h-[65vh] md:grid-cols-[1.5fr_1fr] md:grid-rows-1"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -341,7 +341,7 @@ export default function GalleryPageContent() {
 
             {/* images */}
             <div className="flex min-h-0 flex-col bg-slate-950">
-              <div className="relative h-[40vh] w-full min-h-0 md:h-auto md:flex-1">
+              <div className="relative h-full w-full min-h-0 md:h-auto md:flex-1">
                 <Image
                   key={selected.images[imgIndex]}
                   src={selected.images[imgIndex]}
