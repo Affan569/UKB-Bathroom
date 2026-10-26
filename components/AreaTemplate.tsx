@@ -118,7 +118,7 @@ export default function AreaTemplate({ slug }: AreaTemplateProps) {
 
             <div className="rounded-2xl bg-white p-6 shadow-sm">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#0B86EE]/10 text-[#0B86EE]">
-                <Icon name="wrench" className="h-6 w-6" />
+                <Icon name="tool" className="h-6 w-6" />
               </div>
               <h3 className={`${montserrat.className} mt-4 text-lg font-semibold text-[#0b1b33]`}>
                 Plumbing Challenges
