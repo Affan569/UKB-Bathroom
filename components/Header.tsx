@@ -10,7 +10,8 @@ import { inter } from "./fonts";
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Our Process", href: "/#process" },
+  { label: "Services", href: "/services" },
+  { label: "Areas Covered", href: "/areas-covered" },
   { label: "Blog", href: "/blog" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/#contact" },

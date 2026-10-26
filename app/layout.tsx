@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     template: "%s | UKB Bathrooms"
   },
   description: "Local bathroom fitters in Southampton. Bathroom installation, renovation, wet rooms and ensuites. Free quote. Call +44 7838349520.",
+  keywords: "bathroom fitters Southampton, bathroom installation Southampton, bathroom renovation Southampton, bathroom company Southampton, bathroom fitter near me, new bathroom Southampton, bathroom refurbishment Southampton, wet room installation Southampton, wet room fitters Southampton, ensuite bathroom installation Southampton, bathroom tiling Southampton, bathroom design Southampton, 3D bathroom design, walk-in shower installation Southampton, bathroom suppliers and fitters Southampton, small bathroom renovation Southampton, bath to shower conversion Southampton, bathroom fitters Shirley, bathroom fitters Portswood, bathroom fitters Woolston, bathroom fitters Bitterne, bathroom fitters Eastleigh, bathroom fitters Totton, bathroom fitters Hedge End, bathroom fitters Chandler's Ford, bathroom fitters Romsey, how much does a bathroom cost Southampton, bathroom fitting cost UK 2026, cost of wet room installation, bathroom installation cost per day, how long does it take to fit a bathroom, do I need planning permission for a bathroom",
   authors: [{ name: "UKB Bathrooms" }],
   creator: "UKB Bathrooms",
   publisher: "UKB Bathrooms",

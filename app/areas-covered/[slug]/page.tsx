@@ -4,7 +4,7 @@ import AreaTemplate from "@/components/AreaTemplate";
 import { areasData } from "@/Data/areasData";
 
 interface PageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -12,7 +12,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const data = areasData[params.slug];
+  const { slug } = await params;
+  const data = areasData[slug];
   if (!data) {
     return {
       title: "Area Not Found",
@@ -22,23 +23,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: data.meta.title,
     description: data.meta.description,
+    keywords: data.meta.keywords.join(", "),
     openGraph: {
       title: data.meta.title,
       description: data.meta.description,
-      url: `https://ukbbathrooms.co.uk/areas-covered/${params.slug}`,
+      url: `https://ukbbathrooms.co.uk/areas-covered/${slug}`,
     },
     alternates: {
-      canonical: `https://ukbbathrooms.co.uk/areas-covered/${params.slug}`,
+      canonical: `https://ukbbathrooms.co.uk/areas-covered/${slug}`,
     },
   };
 }
 
-export default function AreaPage({ params }: PageProps) {
-  const data = areasData[params.slug];
+export default async function AreaPage({ params }: PageProps) {
+  const { slug } = await params;
+  const data = areasData[slug];
 
   if (!data) {
     notFound();
   }
 
-  return <AreaTemplate slug={params.slug} />;
+  return <AreaTemplate slug={slug} />;
 }

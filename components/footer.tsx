@@ -1,10 +1,19 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 const NEWSLETTER_EMAIL = process.env.NEXT_PUBLIC_NEWSLETTER_EMAIL ?? "";
+
+const SERVICES_LINKS = [
+  { label: "Bathroom Installation", href: "/services/bathroom-installation-southampton" },
+  { label: "Bathroom Renovation", href: "/services/bathroom-renovation-southampton" },
+  { label: "Wet Rooms", href: "/services/wet-rooms-southampton" },
+  { label: "En-suite Installation", href: "/services/ensuite-installation-southampton" },
+  { label: "Bathroom Design", href: "/services/bathroom-design-southampton" },
+  { label: "Bathroom Tiling", href: "/services/bathroom-tiling-southampton" },
+];
 
 const QUICK_LINKS = [
   { label: "Home", href: "/" },
@@ -12,118 +21,132 @@ const QUICK_LINKS = [
   { label: "Our Process", href: "/#process" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/#contact" },
+  { label: "Services", href: "/services" },
+  { label: "Areas Covered", href: "/areas-covered" },
 ];
 
+const AREAS_LINKS = [
+  { label: "Shirley", href: "/areas-covered/shirley" },
+  { label: "Portswood", href: "/areas-covered/portswood" },
+  { label: "Woolston", href: "/areas-covered/woolston" },
+  { label: "Bitterne", href: "/areas-covered/bitterne" },
+  { label: "Totton", href: "/areas-covered/totton" },
+  { label: "Eastleigh", href: "/areas-covered/eastleigh" },
+];
 
-const USEFUL_LINKS = [
-  { label: "FAQs", href: "#faqs" },
-  { label: "Blog", href: "/blog" },
+const LEGAL_LINKS = [
   { label: "Privacy Policy", href: "/privacy-policy" },
   { label: "Terms & Conditions", href: "/terms" },
 ];
 
-const SERVICE_AREAS = [
-  "Southampton",
-  "Shirley",
-  "Portswood",
-  "Woolston",
-  "Bitterne",
-  "Eastleigh",
-  "Totton",
-  "Hedge End",
-  "Chandler's Ford",
-  "Romsey",
-];
+/* TODO: replace "#" with your real social profile URLs */
+const SOCIALS = [
+  { label: "Facebook", href: "#", icon: "facebook" },
+  { label: "Instagram", href: "#", icon: "instagram" },
+  { label: "YouTube", href: "#", icon: "youtube" },
+  { label: "Pinterest", href: "#", icon: "pinterest" },
+  { label: "LinkedIn", href: "#", icon: "linkedin" },
+] as const;
 
 const svgBase = {
   viewBox: "0 0 24 24",
   fill: "none",
   stroke: "currentColor",
-  strokeWidth: 1.6,
+  strokeWidth: 1.5,
   strokeLinecap: "round" as const,
   strokeLinejoin: "round" as const,
 };
 
-const ChevronRight = ({ className = "h-4 w-4" }: { className?: string }) => (
-  <svg {...svgBase} strokeWidth={2} className={className}>
-    <path d="m9 6 6 6-6 6" />
+const Svg = ({ className = "h-5 w-5", children }: { className?: string; children: ReactNode }) => (
+  <svg {...svgBase} className={className} aria-hidden>
+    {children}
   </svg>
+);
+
+const ChevronRight = ({ className = "h-4 w-4" }: { className?: string }) => (
+  <Svg className={className}>
+    <path strokeWidth={2.2} d="m9 6 6 6-6 6" />
+  </Svg>
 );
 
 const ArrowRight = ({ className = "h-5 w-5" }: { className?: string }) => (
-  <svg {...svgBase} strokeWidth={2} className={className}>
-    <path d="M5 12h14M13 6l6 6-6 6" />
-  </svg>
+  <Svg className={className}>
+    <path strokeWidth={2.2} d="M5 12h14M13 6l6 6-6 6" />
+  </Svg>
 );
 
 const MailIcon = ({ className = "h-5 w-5" }: { className?: string }) => (
-  <svg {...svgBase} className={className}>
+  <Svg className={className}>
     <rect x="3" y="5" width="18" height="14" rx="2" />
     <path d="m3.5 7 8.5 6.5L20.5 7" />
+  </Svg>
+);
+
+const PlaneIcon = ({ className = "h-5 w-5" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
+    <path d="M21.5 3 2.5 10.6c-.8.3-.8 1.4 0 1.7l4.9 1.8 2 6.1c.2.6 1 .8 1.4.3l2.6-2.7 4.6 3.4c.6.4 1.4.1 1.6-.6L23 4.4c.2-.9-.7-1.700-1.500-1.400zM9 13.400l9.500-6.700-7.400 8.100-.4 3.100z" />
   </svg>
 );
 
-const PhoneIcon = ({ className = "h-5 w-5" }: { className?: string }) => (
-  <svg {...svgBase} className={className}>
-    <path d="M5 4h3.5l1.8 4.5-2.3 1.5a11 11 0 0 0 6 6l1.5-2.3L20 15.5V19a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" />
-  </svg>
-);
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const ShieldCheck = ({ className }: { className?: string }) => (
-  <svg {...svgBase} className={className}>
-    <path d="M12 3 5 6v5.5c0 4.2 2.9 8 7 9.5 4.1-1.5 7-5.300 7-9.500V6l-7-3Z" />
-    <path d="m8.800 12 2.400 2.400 4.200-4.400" />
-  </svg>
-);
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const StarIcon = ({ className }: { className?: string }) => (
-  <svg {...svgBase} className={className}>
-    <path d="m12 3.500 2.600 5.300 5.800.8-4.200 4.100 1 5.800-5.200-2.700-5.200 2.700 1-5.800-4.200-4.100 5.800-.8L12 3.500Z" />
-  </svg>
-);
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const ToolsIcon = ({ className }: { className?: string }) => (
-  <svg {...svgBase} className={className}>
-    <path d="m4 20 8.500-8.500M12.500 11.500 17 7M15 4a4 4 0 0 0-1 4.500l-1.500 1.500 2 2 1.500-1.500A4 4 0 0 0 20 9l-2.500 1-1.500-1.500L17 6l-2-2Z" />
-    <path d="M20 20 11.500 11.500M7 7 4 4l1-1 3 3M8 6 6 8" />
-  </svg>
-);
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const DiamondIcon = ({ className }: { className?: string }) => (
-  <svg {...svgBase} className={className}>
-    <path d="M6 3h12l4 6-10 12L2 9l4-6Z" />
-    <path d="M2 9h20M12 21 8 9l3-6M12 21l4-12-3-6" />
-  </svg>
-);
-
-
+function SocialIcon({ name }: { name: (typeof SOCIALS)[number]["icon"] }) {
+  switch (name) {
+    case "facebook":
+      return (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden>
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+        </svg>
+      );
+    case "instagram":
+      return (
+        <Svg className="h-4 w-4">
+          <rect x="2.500" y="2.500" width="19" height="19" rx="5" strokeWidth={2} />
+          <circle cx="12" cy="12" r="4" strokeWidth={2} />
+          <circle cx="17.500" cy="6.500" r=".6" fill="currentColor" />
+        </Svg>
+      );
+    case "youtube":
+      return (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden>
+          <path d="M21.600 7.200a2.500 2.500 0 0 0-1.800-1.800C18.200 5 12 5 12 5s-6.200 0-7.800.4A2.500 2.500 0 0 0 2.400 7.200C2 8.800 2 12 2 12s0 3.200.4 4.800a2.500 2.500 0 0 0 1.800 1.800C5.800 19 12 19 12 19s6.200 0 7.800-.4a2.500 2.500 0 0 0 1.800-1.800c.4-1.600.4-4.800.4-4.800s0-3.200-.4-4.800zM10 15V9l5.200 3z" />
+        </svg>
+      );
+    case "pinterest":
+      return (
+        <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden>
+          <text x="12" y="19" textAnchor="middle" fontSize="20" fontWeight="800" fill="currentColor" fontFamily="Georgia, serif">P</text>
+        </svg>
+      );
+    case "linkedin":
+      return (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden>
+          <path d="M4 9h4v11H4zM6 3.500a2.300 2.300 0 1 1 0 4.600 2.300 2.300 0 0 1 0-4.600zM10 9h3.800v1.600c.6-1 1.900-1.900 3.800-1.900 3.600 0 4.400 2.300 4.400 5.400V20h-4v-5.200c0-1.300 0-2.800-1.800-2.800-1.800 0-2.200 1.300-2.200 2.700V20h-4z" />
+        </svg>
+      );
+  }
+}
 
 function LinkColumn({
   title,
   links,
+  className = "",
 }: {
   title: string;
   links: { label: string; href: string }[];
+  className?: string;
 }) {
   return (
-    <div className="xl:col-span-2">
-      <h3 className="text-xs font-bold uppercase tracking-widest text-white">
-        {title}
-      </h3>
-      <span className="mt-2.5 mb-5 block h-0.5 w-8 bg-[#1E9BF0]" />
-      <ul className="space-y-3.5">
+    <div className={className}>
+      <h3 className="text-sm font-bold uppercase tracking-wider text-white">{title}</h3>
+      <span className="mb-4 mt-2 block h-[3px] w-10 rounded bg-[#1E9BF0]" />
+      <ul className="space-y-2.5">
         {links.map((l) => (
           <li key={l.label}>
             <Link
               href={l.href}
-              className="group flex items-center justify-between gap-5 text-sm text-white/85 transition-colors hover:text-[#2F9BF5]"
+              className="group flex items-center justify-between gap-2 text-sm text-white/85 transition-colors hover:text-[#2F9BF5]"
             >
-              {l.label}
-              <ChevronRight className="h-3.5 w-3.5 text-[#1E9BF0] transition-transform group-hover:translate-x-1" />
+              <span>{l.label}</span>
+              <ChevronRight className="h-4 w-4 shrink-0 text-[#1E9BF0] transition-transform group-hover:translate-x-1" />
             </Link>
           </li>
         ))}
@@ -173,9 +196,9 @@ function NewsletterForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate={false}>
-      <div className="flex items-center gap-2.5 rounded-full border border-[#1E4F9A] bg-[#04203f]/70 py-1 pl-4 pr-1 transition-colors focus-within:border-[#2F9BF5]">
-        <MailIcon className="h-4 w-4 shrink-0 text-white/80" />
+    <form onSubmit={onSubmit}>
+      <div className="flex items-center gap-2 rounded-full border border-[#1E6FCB] bg-[#031a35]/80 py-1 pl-4 pr-1 transition-colors focus-within:border-[#2F9BF5]">
+        <MailIcon className="h-4 w-4 shrink-0 text-white/85" />
         <input
           type="email"
           name="email"
@@ -187,28 +210,26 @@ function NewsletterForm() {
           }}
           placeholder="Your email address"
           aria-label="Your email address"
-          className="min-w-0 flex-1 bg-transparent text-sm text-white placeholder:text-white/65 focus:outline-none"
+          className="min-w-0 flex-1 bg-transparent text-sm text-white placeholder:text-white/70 focus:outline-none"
         />
         <input type="text" name="_honey" tabIndex={-1} autoComplete="off" className="hidden" />
         <button
           type="submit"
           disabled={status === "loading"}
           aria-label="Subscribe"
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#1E9BF0] text-white transition hover:bg-[#3aa9f7] disabled:opacity-60"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#1E9BF0] text-white transition hover:bg-[#3aa9f7] disabled:opacity-60"
         >
           {status === "loading" ? (
-            <span className="h-5 w-5 animate-spin rounded-full border-2 border-white/40 border-t-white" />
+            <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
           ) : (
-            <ArrowRight />
+            <ArrowRight className="h-4 w-4" />
           )}
         </button>
       </div>
 
       <p
         role="status"
-        className={`mt-3 min-h-5 text-xs ${
-          status === "success" ? "text-emerald-400" : "text-red-400"
-        }`}
+        className={`mt-1 min-h-4 text-xs ${status === "success" ? "text-emerald-400" : "text-red-400"}`}
       >
         {status === "success" && "Thanks for subscribing!"}
         {status === "error" && "Something went wrong. Please try again."}
@@ -218,16 +239,18 @@ function NewsletterForm() {
 }
 
 export default function Footer() {
-  const [year] = useState(() => new Date().getFullYear());
+  const year = new Date().getFullYear();
+  const divider = "lg:border-l lg:border-[#12335f] lg:pl-4";
 
   return (
-    <footer className="relative overflow-hidden bg-[#04152b] text-white">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#06203f]/40 via-transparent to-transparent" />
+    <footer className="relative overflow-hidden bg-[#03152e] text-white">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#06203f]/50 via-transparent to-transparent" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-14 lg:px-12 lg:pt-16">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-12 xl:gap-8">
-          <div className="md:col-span-2 lg:col-span-2 xl:col-span-3">
-            <Link href="/" aria-label="UKB Bathrooms home">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-4 pt-16 sm:px-5 lg:px-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1.1fr)_minmax(0,0.9fr)_minmax(0,0.9fr)_minmax(0,1.4fr)] lg:gap-4">
+          {/* Brand */}
+          <div className="sm:col-span-2 lg:col-span-1">
+            <Link href="/" aria-label="UKB Bathrooms home" className="inline-block">
               <Image
                 src="/images/logo1.png"
                 alt="UKB Bathrooms – Design / Supply / Install"
@@ -238,98 +261,71 @@ export default function Footer() {
               />
             </Link>
 
-            <h2 className="mt-9 text-xl font-bold leading-tight text-white">
+            <h2 className="mt-5 text-2xl font-extrabold leading-tight text-white">
               Beautiful Bathrooms.
               <br />
-              <span className="text-[#1E9BF0]">Designed Around You.</span>
+              <span className="text-[#1EA7FF]">Designed Around You.</span>
             </h2>
 
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/75">
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/80">
               From modern designs to complete installations, UKB Bathrooms brings your
               vision to life with quality, reliability and expert craftsmanship.
             </p>
+
+           
           </div>
+          <LinkColumn title="Quick Links" links={QUICK_LINKS} className={divider} />
+          <LinkColumn title="Services" links={SERVICES_LINKS} className={divider} />
+          <LinkColumn title="Areas Covered" links={AREAS_LINKS} className={divider} />
 
-          <LinkColumn title="Quick Links" links={QUICK_LINKS} />
-          <LinkColumn title="Useful Links" links={USEFUL_LINKS} />
-
-          <div className="md:col-span-2 lg:col-span-2 xl:col-span-2">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-white">
-              Areas We Cover
-            </h3>
-            <span className="mt-2.5 mb-5 block h-0.5 w-8 bg-[#1E9BF0]" />
-            <ul className="space-y-2.5">
-              {SERVICE_AREAS.map((area) => (
-                <li key={area} className="text-sm text-white/85">
-                  {area}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="md:col-span-2 lg:col-span-2 xl:col-span-3 xl:border-l xl:border-[#12335f] xl:pl-10">
-            <MailIcon className="h-7 w-7 text-[#1E9BF0]" />
-            <h3 className="mt-2.5 text-lg font-bold">Get In Touch</h3>
-            <p className="mt-2 text-sm leading-relaxed text-white/80">
-              Have a question or need a quote?
-              <br />
-              We&apos;re here to help.
+          {/* Get in touch + follow */}
+          <div className={`sm:col-span-2 lg:col-span-1 ${divider}`}>
+            <MailIcon className="h-7 w-7 text-[#1EA7FF]" />
+            <h3 className="mt-1 whitespace-nowrap text-xl font-bold text-white">Get In Touch</h3>
+            <p className="mt-1 text-sm leading-snug text-white/80">
+              Have a question or need a quote? We&apos;re here to help.
             </p>
 
-            <div className="mt-6 space-y-3">
-              <a href="tel:+44 7838349520" className="flex items-center gap-3 text-sm text-white/90 hover:text-[#2F9BF5] transition-colors">
-                <PhoneIcon className="h-5 w-5" />
-                +44 7838349520
-              </a>
-              <a href="mailto:info@ukbbathroom.co.uk" className="flex items-center gap-3 text-sm text-white/90 hover:text-[#2F9BF5] transition-colors">
-                <MailIcon className="h-5 w-5" />
-                info@ukbbathroom.co.uk
-              </a>
-              <div className="flex items-start gap-3 text-sm text-white/90">
-                <span className="mt-0.5">
-                  <svg {...svgBase} className="h-5 w-5">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
-                </span>
-                <div>
-                  <p>51 Westfield Road</p>
-                  <p>Southampton SO15 4HQ</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 text-sm text-white/90">
-                <span className="mt-0.5">
-                  <svg {...svgBase} className="h-5 w-5">
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M12 6v6l4 2" />
-                  </svg>
-                </span>
-                <p>Opening Hours: 8am - 6pm</p>
-              </div>
+            <div className="mt-3">
+              <NewsletterForm />
             </div>
 
-            <div className="mt-6">
-              <NewsletterForm />
+            <div className="mt-2 border-t border-[#12335f] pt-3">
+             
             </div>
           </div>
         </div>
       </div>
 
-      <div className="relative z-10 mt-12 border-t border-[#12335f]">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-5 text-xs sm:flex-row sm:items-center sm:justify-between lg:px-12">
-         <p className="text-white/75">
-  &copy; {year} UKB Bathrooms. All rights reserved.{" "}
-  <span className="mx-2">|</span>
-  Created by{" "}
-  <a
-    href="https://tacreatives.com/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-white hover:text-[#00A8FF] transition-colors duration-300"
-  >
-    TA Creative
-  </a>
-</p>
+      {/* Bottom bar */}
+      <div className="relative z-10 mt-8 border-t border-[#12335f]">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-3 px-4 py-4 text-sm text-white/80 sm:px-5 md:flex-row lg:px-6">
+          <p className="text-center md:text-left">
+            &copy; {year} UKB Bathrooms. All rights reserved.
+            <span className="mx-2 hidden text-white/30 sm:inline">|</span>
+            <span className="block sm:inline">
+              Created by{" "}
+              <a
+                href="https://tacreatives.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-white transition-colors duration-300 hover:text-[#00A8FF]"
+              >
+                TA Creative
+              </a>
+            </span>
+          </p>
+
+          <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-5">
+            <nav aria-label="Legal" className="flex items-center gap-5">
+              {LEGAL_LINKS.map((l) => (
+                <Link key={l.label} href={l.href} className="transition-colors hover:text-[#2F9BF5]">
+                  {l.label}
+                </Link>
+              ))}
+            </nav>
+            
+          </div>
         </div>
       </div>
     </footer>

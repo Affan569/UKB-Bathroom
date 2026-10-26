@@ -5,6 +5,7 @@ export interface AreaPageData {
   meta: {
     title: string;
     description: string;
+    keywords: string[];
   };
   hero: {
     headline: string;
@@ -28,6 +29,7 @@ export const areasData: Record<string, AreaPageData> = {
     meta: {
       title: "Bathroom Fitters Shirley Southampton | UKB Bathrooms",
       description: "Local bathroom fitters in Shirley, Southampton. Professional installation, renovation, and tiling services. Free quote. Call +44 7838 349520.",
+      keywords: ["bathroom fitters Shirley", "bathroom installation Shirley", "bathroom renovation Shirley", "bathroom fitter near me", "bathroom company Southampton"],
     },
     hero: {
       headline: "Bathroom Services in Shirley, Southampton",
@@ -77,6 +79,7 @@ export const areasData: Record<string, AreaPageData> = {
     meta: {
       title: "Bathroom Fitters Portswood Southampton | UKB Bathrooms",
       description: "Local bathroom fitters in Portswood, Southampton. Professional installation, renovation, and tiling services. Free quote. Call +44 7838 349520.",
+      keywords: ["bathroom fitters Portswood", "bathroom installation Portswood", "bathroom renovation Portswood", "bathroom fitter near me", "bathroom company Southampton"],
     },
     hero: {
       headline: "Bathroom Services in Portswood, Southampton",
@@ -126,6 +129,7 @@ export const areasData: Record<string, AreaPageData> = {
     meta: {
       title: "Bathroom Fitters Woolston Southampton | UKB Bathrooms",
       description: "Local bathroom fitters in Woolston, Southampton. Professional installation, renovation, and tiling services. Free quote. Call +44 7838 349520.",
+      keywords: ["bathroom fitters Woolston", "bathroom installation Woolston", "bathroom renovation Woolston", "bathroom fitter near me", "bathroom company Southampton"],
     },
     hero: {
       headline: "Bathroom Services in Woolston, Southampton",
@@ -175,6 +179,7 @@ export const areasData: Record<string, AreaPageData> = {
     meta: {
       title: "Bathroom Fitters Bitterne Southampton | UKB Bathrooms",
       description: "Local bathroom fitters in Bitterne, Southampton. Professional installation, renovation, and tiling services. Free quote. Call +44 7838 349520.",
+      keywords: ["bathroom fitters Bitterne", "bathroom installation Bitterne", "bathroom renovation Bitterne", "bathroom fitter near me", "bathroom company Southampton"],
     },
     hero: {
       headline: "Bathroom Services in Bitterne, Southampton",
@@ -224,6 +229,7 @@ export const areasData: Record<string, AreaPageData> = {
     meta: {
       title: "Bathroom Fitters Totton Southampton | UKB Bathrooms",
       description: "Local bathroom fitters in Totton, Southampton. Professional installation, renovation, and tiling services. Free quote. Call +44 7838 349520.",
+      keywords: ["bathroom fitters Totton", "bathroom installation Totton", "bathroom renovation Totton", "bathroom fitter near me", "bathroom company Southampton"],
     },
     hero: {
       headline: "Bathroom Services in Totton, Southampton",
@@ -273,6 +279,7 @@ export const areasData: Record<string, AreaPageData> = {
     meta: {
       title: "Bathroom Fitters Eastleigh Hampshire | UKB Bathrooms",
       description: "Local bathroom fitters in Eastleigh, Hampshire. Professional installation, renovation, and tiling services. Free quote. Call +44 7838 349520.",
+      keywords: ["bathroom fitters Eastleigh", "bathroom installation Eastleigh", "bathroom renovation Eastleigh", "bathroom fitter near me", "bathroom company Hampshire"],
     },
     hero: {
       headline: "Bathroom Services in Eastleigh, Hampshire",
