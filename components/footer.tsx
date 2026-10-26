@@ -272,7 +272,12 @@ export default function Footer() {
               vision to life with quality, reliability and expert craftsmanship.
             </p>
 
-           
+            <div className="mt-4 space-y-2 text-sm text-white/90">
+              <p>51 Westfield Road, Southampton, SO15 4HQ</p>
+              <p className="font-semibold text-[#1EA7FF]">+44 7838 349520</p>
+              <p>info@ukbbathrooms.co.uk</p>
+              <p className="text-xs text-white/70">Mon-Sat: 8am - 6pm</p>
+            </div>
           </div>
           <LinkColumn title="Quick Links" links={QUICK_LINKS} className={divider} />
           <LinkColumn title="Services" links={SERVICES_LINKS} className={divider} />

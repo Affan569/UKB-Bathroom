@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { Great_Vibes } from "next/font/google";
 import {
-  buildContactEmailPayload,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   contactFeatures,
   contactFormHeading,
@@ -16,12 +15,6 @@ import {
 } from "@/Data/contactEmail";
 
 const script = Great_Vibes({ subsets: ["latin"], weight: "400" });
-
-// Same pattern as the footer: FormSubmit + an env variable.
-const CONTACT_EMAIL =
-  process.env.NEXT_PUBLIC_CONTACT_EMAIL ??
-  process.env.NEXT_PUBLIC_NEWSLETTER_EMAIL ??
-  "";
 
 /* ---------- scroll reveal ---------- */
 
@@ -192,26 +185,23 @@ export default function Contact() {
     const form = new FormData(e.currentTarget);
     if (form.get("_honey")) return; // bots
 
-    if (!CONTACT_EMAIL) {
-      console.error("Missing NEXT_PUBLIC_CONTACT_EMAIL in .env.local");
-      setStatus("error");
-      return;
-    }
-
     setStatus("loading");
     try {
-      const res = await fetch(
-        `https://formsubmit.co/ajax/${encodeURIComponent(CONTACT_EMAIL)}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify(buildContactEmailPayload(values)),
-        }
-      );
-      if (!res.ok) throw new Error("Request failed");
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+      const data = await res.json();
+      
+      if (!res.ok) {
+        throw new Error(data.error || "Request failed");
+      }
+      
       setStatus("success");
       setValues(emptyContactForm);
-    } catch {
+    } catch (error) {
+      console.error("Form submission error:", error);
       setStatus("error");
     }
   }

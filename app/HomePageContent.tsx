@@ -6,7 +6,7 @@ import HeroSection from '@/components/HeroSection';
 import VideoModal from '@/components/VideoModal';
 import OurProcess from '@/components/OurProcess';
 import AboutServices from '@/components/AboutServices';
-// import Testimonial from '@/components/testinomial';
+import Testimonial from '@/components/testinomial';
 import Faq from '@/components/faq';
 import Contact from '@/components/contact';
 import BackToTop from '@/components/BackToTop';
@@ -20,7 +20,7 @@ export default function HomePageContent() {
       <HeroSection onVideoOpen={() => setIsVideoModalOpen(true)} />
       <OurProcess />
       <AboutServices />
-      {/* <Testimonial /> */}
+      <Testimonial />
       <Faq />
       <Contact />
       <VideoModal

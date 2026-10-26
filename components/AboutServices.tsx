@@ -43,7 +43,7 @@ const SERVICES: {
     icon: "diamond",
     title: "Bathroom Renovation",
     description: "Upgrade your space, add more value.",
-    image: "/images/bathroom-renovation.jpg",
+    image: "/images/5.jpg",
   },
 ];
 

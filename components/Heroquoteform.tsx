@@ -2,18 +2,11 @@
 
 import { useState, type FormEvent } from "react";
 import {
-  buildContactEmailPayload,
   contactFormHeading,
   emptyContactForm,
   serviceOptions,
   type ContactFormValues,
 } from "@/Data/contactEmail";
-
-// Same pattern as the contact section: FormSubmit + an env variable.
-const HERO_FORM_EMAIL =
-  process.env.NEXT_PUBLIC_CONTACT_EMAIL ??
-  process.env.NEXT_PUBLIC_NEWSLETTER_EMAIL ??
-  "";
 
 /* ---------- icons ---------- */
 
@@ -102,26 +95,23 @@ export default function HeroQuoteForm() {
     const submitted = new FormData(e.currentTarget);
     if (submitted.get("_honey")) return; // bots
 
-    if (!HERO_FORM_EMAIL) {
-      console.error("Missing NEXT_PUBLIC_CONTACT_EMAIL in .env.local");
-      setFormStatus("error");
-      return;
-    }
-
     setFormStatus("loading");
     try {
-      const res = await fetch(
-        `https://formsubmit.co/ajax/${encodeURIComponent(HERO_FORM_EMAIL)}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify(buildContactEmailPayload(formData)),
-        }
-      );
-      if (!res.ok) throw new Error("Request failed");
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      
+      if (!res.ok) {
+        throw new Error(data.error || "Request failed");
+      }
+      
       setFormStatus("success");
       setFormData(emptyContactForm);
-    } catch {
+    } catch (error) {
+      console.error("Form submission error:", error);
       setFormStatus("error");
     }
   }
